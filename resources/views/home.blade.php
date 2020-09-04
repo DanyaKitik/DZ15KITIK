@@ -1,6 +1,11 @@
 @extends('layout')
 
 @section('content')
+    @error('not_allowed')
+    <div class="alert alert-danger" role="alert">
+         {{$message}}
+    </div>
+    @enderror
     @if(\Illuminate\Support\Facades\Session::has('success'))
         <div class="alert alert-success" role="alert">
             {{\Illuminate\Support\Facades\Session::get('success')}}

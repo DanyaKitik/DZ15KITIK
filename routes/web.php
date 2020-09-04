@@ -38,7 +38,8 @@ Route::middleware(['auth'])->group(function (){
 
     Route::post('/create', '\\' . \App\Http\Controllers\CreateController::class . '@check');
 
-    Route::get('/delete/{id?}', '\\' . \App\Http\Controllers\DeleteAdController::class)
+    Route::middleware('\\' . \App\Http\Middleware\DeleteAd::class)
+        ->get('/delete/{id?}', '\\' . \App\Http\Controllers\DeleteAdController::class)
         ->name('delete');
 
     Route::middleware(\App\Http\Middleware\CheckAdAuthor::class)
